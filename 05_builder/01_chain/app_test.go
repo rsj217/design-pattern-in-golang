@@ -1,4 +1,4 @@
-package builder_chain
+package builder
 
 import "testing"
 

@@ -1,16 +1,16 @@
-package option
+package chain_of_responsibility
 
 import "testing"
 
-func TestApp(t *testing.T) {
+func Test_app(t *testing.T) {
 	tests := []struct {
 		name string
 	}{
-		{"option"},
+		{"chain of responsibility"},
 	}
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
-			App()
+			app()
 		})
 	}
 }
