@@ -16,12 +16,12 @@ func (hv *HotelVoucher) GetDiscount() int64 {
 	return hv.discount
 }
 
-type LifeVoucher struct {
+type ScenicVoucher struct {
 	discount int64
 }
 
-func (lv *LifeVoucher) GetDiscount() int64 {
-	return lv.discount
+func (sv *ScenicVoucher) GetDiscount() int64 {
+	return sv.discount
 }
 
 type Carder interface {
@@ -65,7 +65,7 @@ type ScenicFactory struct {
 }
 
 func (sf *ScenicFactory) CreateBenefiter() Benefiter {
-	return &LifeVoucher{sf.config.discount}
+	return &ScenicVoucher{sf.config.discount}
 
 }
 func (sf *ScenicFactory) CreateCarder() Carder {
