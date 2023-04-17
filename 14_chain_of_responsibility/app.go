@@ -40,7 +40,7 @@ func (f *Filter) CheckBenefitType() *Filter {
 	fmt.Println("CheckBenefitType")
 	return f
 }
-func (f Filter) Err() error {
+func (f *Filter) Err() error {
 	return f.err
 }
 
