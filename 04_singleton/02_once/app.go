@@ -23,7 +23,7 @@ func GetDB() *DBConn {
 	return dbConn
 }
 
-func App() {
+func Client() {
 	for i := 0; i < 100; i++ {
 		go func() {
 			GetDB()

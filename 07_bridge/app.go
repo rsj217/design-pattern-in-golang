@@ -53,7 +53,7 @@ type Hotel struct {
 	benefiter Benefiter
 }
 
-func (h *Hotel) GettDiscount() int64 {
+func (h *Hotel) GetDiscount() int64 {
 	return h.benefiter.GetDiscount()
 }
 
@@ -78,7 +78,7 @@ type Config struct {
 	rule  string
 }
 
-func App() {
+func Client() {
 	conf := &Config{int64(100), "100-70-20"}
 	coupon := NewCoupon(conf.rule)
 
@@ -87,11 +87,11 @@ func App() {
 
 	hotel := Hotel{}
 	hotel.SetBenefiter(coupon)
-	discount := hotel.GettDiscount()
+	discount := hotel.GetDiscount()
 	fmt.Printf("hotel coupon discount=%d\n", discount)
 
 	hotel.SetBenefiter(voucher)
-	discount = hotel.GettDiscount()
+	discount = hotel.GetDiscount()
 	fmt.Printf("hotel voucher discount=%d\n", discount)
 
 	scenic := Scenic{}

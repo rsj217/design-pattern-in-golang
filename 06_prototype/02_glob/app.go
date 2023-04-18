@@ -34,7 +34,7 @@ func NewAct(name, rule string, act *Act) *Act {
 	return newAct
 }
 
-func App() {
+func Client() {
 	act1 := Act{
 		"大促活动",
 		&CouponTpl{"满减券", "99-10-10"},

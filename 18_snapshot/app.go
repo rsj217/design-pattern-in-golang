@@ -14,7 +14,7 @@ type Act struct {
 
 func NewAct(stock int64) *Act {
 	act := &Act{stock: stock}
-	act.changes = append(act.changes, &Snapshot{stock})
+	act.changes = Clientend(act.changes, &Snapshot{stock})
 	return act
 }
 
@@ -25,7 +25,7 @@ func (a *Act) String() string {
 func (a *Act) Consumer(stock int64) *Snapshot {
 	a.stock -= stock
 	s := Snapshot{a.stock}
-	a.changes = append(a.changes, &s)
+	a.changes = Clientend(a.changes, &s)
 	a.currIdx++
 	fmt.Printf("Consumer: %d, left stock: %d\n", stock, a.stock)
 	return &s
@@ -51,7 +51,7 @@ func (a *Act) Redo() *Snapshot {
 	return nil
 }
 
-func App() {
+func Client() {
 	act := NewAct(10)
 	act.Consumer(3)
 	act.Consumer(5)

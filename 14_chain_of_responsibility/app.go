@@ -44,7 +44,7 @@ func (f *Filter) Err() error {
 	return f.err
 }
 
-func app() {
+func Client() {
 	f := Filter{}
 	err := f.CheckAdiu("adiu").
 		CheckPoiid("poiid").

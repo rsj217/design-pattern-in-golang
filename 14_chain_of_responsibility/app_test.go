@@ -2,7 +2,7 @@ package chain_of_responsibility
 
 import "testing"
 
-func Test_app(t *testing.T) {
+func Test_Client(t *testing.T) {
 	tests := []struct {
 		name string
 	}{
@@ -10,7 +10,7 @@ func Test_app(t *testing.T) {
 	}
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
-			app()
+			Client()
 		})
 	}
 }

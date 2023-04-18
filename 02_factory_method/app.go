@@ -63,7 +63,7 @@ type Config struct {
 	rule  string
 }
 
-func App() {
+func Client() {
 	conf := Config{int64(100), "100-70-20"}
 
 	coupon := CouponFactory{}.CreateBenefiter(conf.rule)

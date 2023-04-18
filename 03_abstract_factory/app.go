@@ -72,13 +72,13 @@ func (sf *ScenicFactory) CreateCarder() Carder {
 	return &ScenicCard{sf.config.saleAmount}
 }
 
-type Application struct {
+type Clientlication struct {
 	factory BizFactory
 	benefit Benefiter
 }
 
-func NewApplication(factory BizFactory) *Application {
-	return &Application{factory: factory}
+func NewClientlication(factory BizFactory) *Clientlication {
+	return &Clientlication{factory: factory}
 }
 
 type Config struct {
@@ -86,16 +86,16 @@ type Config struct {
 	saleAmount int64
 }
 
-func App() {
+func Client() {
 	conf := Config{int64(10), int64(20)}
 
-	app := NewApplication(&HotelFactory{conf})
-	discount := app.factory.CreateBenefiter().GetDiscount()
-	saleAmount := app.factory.CreateCarder().GetSaleAmount()
+	Client := NewClientlication(&HotelFactory{conf})
+	discount := Client.factory.CreateBenefiter().GetDiscount()
+	saleAmount := Client.factory.CreateCarder().GetSaleAmount()
 	fmt.Printf("hotel voucher discount: %d, card: %d \n", discount, saleAmount)
 
-	app = NewApplication(&ScenicFactory{conf})
-	discount = app.factory.CreateBenefiter().GetDiscount()
-	saleAmount = app.factory.CreateCarder().GetSaleAmount()
+	Client = NewClientlication(&ScenicFactory{conf})
+	discount = Client.factory.CreateBenefiter().GetDiscount()
+	saleAmount = Client.factory.CreateCarder().GetSaleAmount()
 	fmt.Printf("scenic voucher discount: %d, card: %d \n", discount, saleAmount)
 }

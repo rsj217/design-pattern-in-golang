@@ -57,7 +57,7 @@ func NewUserManger(opts ...Option) *UserManger {
 	return u
 }
 
-func App() {
+func Client() {
 
 	// 售卖
 	userManger := NewUserManger(

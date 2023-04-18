@@ -2,7 +2,7 @@ package builder
 
 import "testing"
 
-func TestApp(t *testing.T) {
+func TestClient(t *testing.T) {
 	tests := []struct {
 		name string
 	}{
@@ -10,7 +10,7 @@ func TestApp(t *testing.T) {
 	}
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
-			App()
+			Client()
 		})
 	}
 }
