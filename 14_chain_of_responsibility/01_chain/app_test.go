@@ -1,8 +1,8 @@
-package chain_of_responsibility
+package chainofreponsibility
 
 import "testing"
 
-func Test_Client(t *testing.T) {
+func TestClient(t *testing.T) {
 	tests := []struct {
 		name string
 	}{
