@@ -116,30 +116,30 @@ func (a *TransactCommand) Undo() {
 	}
 }
 
-var _ Command = (*CompositeActCommand)(nil)
+var _ Command = (*CompositeTransferCommand)(nil)
 
-type CompositeActCommand struct {
+type CompositeTransferCommand struct {
 	commands []Command
 }
 
-func (cac *CompositeActCommand) Call() {
+func (cac *CompositeTransferCommand) Call() {
 	for _, v := range cac.commands {
 		v.Call()
 	}
 }
 
-func (cac *CompositeActCommand) Undo() {
+func (cac *CompositeTransferCommand) Undo() {
 	for idx := range cac.commands {
 		cac.commands[len(cac.commands)-1-idx].Undo()
 	}
 }
 
-func (cac *CompositeActCommand) Succeeded() bool {
+func (cac *CompositeTransferCommand) Succeeded() bool {
 	//TODO implement me
 	panic("implement me")
 }
 
-func (cac *CompositeActCommand) SetSucceeded(value bool) {
+func (cac *CompositeTransferCommand) SetSucceeded(value bool) {
 	//TODO implement me
 	panic("implement me")
 }
@@ -147,7 +147,7 @@ func (cac *CompositeActCommand) SetSucceeded(value bool) {
 var _ Command = (*TokenTransferCommand)(nil)
 
 type TokenTransferCommand struct {
-	CompositeActCommand
+	CompositeTransferCommand
 	from, to Transfer
 	token    int64
 }
