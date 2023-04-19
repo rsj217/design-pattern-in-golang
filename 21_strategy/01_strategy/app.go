@@ -13,7 +13,7 @@ type Push struct {
 }
 
 func (p *Push) getDeviceIdBy(uid int64) string {
-	return fmt.Sprintf("%d-ios-14-10010", uid)
+	return fmt.Sprintf("%d-ios-14-110100", uid)
 }
 
 func (p *Push) Send(msg string) bool {
