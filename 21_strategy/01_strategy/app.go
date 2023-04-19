@@ -38,6 +38,26 @@ func (s *SMS) Send(msg string) bool {
 	return true
 }
 
+type PushAndSMS struct {
+	uid int64
+	*Push
+	*SMS
+}
+
+func NewPushAndSMS(uid int64) *PushAndSMS {
+	return &PushAndSMS{
+		uid,
+		&Push{uid: uid},
+		&SMS{uid: uid},
+	}
+}
+
+func (ps *PushAndSMS) Send(msg string) bool {
+	ps.Push.Send(msg)
+	ps.SMS.Send(msg)
+	return true
+}
+
 type NotifyCtx struct {
 	notifyer Notifyer
 }
@@ -51,12 +71,22 @@ func (nc *NotifyCtx) Send(msg string) bool {
 }
 
 func Client() {
-	push := &Push{110110}
+	flag := "both"
 	notifyCtx := NotifyCtx{}
-	notifyCtx.SetNotifyer(push)
-	notifyCtx.Send("hello world")
+	msg := "hello world"
 
-	sms := &SMS{110110}
-	notifyCtx.SetNotifyer(sms)
-	notifyCtx.Send("hello world")
+	switch flag {
+	case "push":
+		push := &Push{110110}
+		notifyCtx.SetNotifyer(push)
+		notifyCtx.Send(msg)
+	case "sms":
+		sms := &SMS{110110}
+		notifyCtx.SetNotifyer(sms)
+		notifyCtx.Send(msg)
+	default:
+		both := NewPushAndSMS(110110)
+		notifyCtx.SetNotifyer(both)
+		notifyCtx.Send(msg)
+	}
 }
