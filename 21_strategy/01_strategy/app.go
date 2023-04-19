@@ -3,7 +3,6 @@ package strategy
 import "fmt"
 
 type Notifyer interface {
-	FetchIdentify(uid int64) string
 	Send(msg string) bool
 }
 
@@ -13,12 +12,12 @@ type Push struct {
 	uid int64
 }
 
-func (p *Push) FetchIdentify(uid int64) string {
-	return fmt.Sprintf("%d-ios-14-10010", p.uid)
+func (p *Push) getDeviceIdBy(uid int64) string {
+	return fmt.Sprintf("%d-ios-14-10010", uid)
 }
 
 func (p *Push) Send(msg string) bool {
-	deviceId := p.FetchIdentify(p.uid)
+	deviceId := p.getDeviceIdBy(p.uid)
 	fmt.Printf("%s Send push %s\n", deviceId, msg)
 	return true
 }
@@ -29,12 +28,12 @@ type SMS struct {
 	uid int64
 }
 
-func (s *SMS) FetchIdentify(uid int64) string {
+func (s *SMS) getPhoneBy(uid int64) string {
 	return "18519191001"
 }
 
 func (s *SMS) Send(msg string) bool {
-	phone := s.FetchIdentify(s.uid)
+	phone := s.getPhoneBy(s.uid)
 	fmt.Printf("%s Send sms %s\n", phone, msg)
 	return true
 }
