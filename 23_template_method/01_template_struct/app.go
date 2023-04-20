@@ -39,7 +39,7 @@ type SMS struct {
 }
 
 func (s *SMS) GetIdentify() string {
-	return "18519191001"
+	return fmt.Sprintf("18519191001-%d", s.uid)
 }
 
 func (s *SMS) Send(msg, identify string) bool {

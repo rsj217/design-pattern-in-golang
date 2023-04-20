@@ -20,7 +20,7 @@ func PushSave(info interface{}) {
 }
 
 func SMSGetIdentify(uid int64) string {
-	return "18519191001"
+	return fmt.Sprintf("18519191001-%d", uid)
 }
 
 func SMSSend(msg, identify string) bool {
