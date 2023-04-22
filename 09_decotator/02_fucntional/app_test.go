@@ -27,3 +27,16 @@ func Test_client2(t *testing.T) {
 		})
 	}
 }
+
+func Test_client3(t *testing.T) {
+	tests := []struct {
+		name string
+	}{
+		{"multi decorator"},
+	}
+	for _, tt := range tests {
+		t.Run(tt.name, func(t *testing.T) {
+			client3()
+		})
+	}
+}
