@@ -67,7 +67,7 @@ func (a *ActCommand) Undo() {
 	}
 }
 
-func Client() {
+func client() {
 	act := &Act{}
 	cmd1 := NewActCommand(act, Produce, 100)
 	cmd1.Call()

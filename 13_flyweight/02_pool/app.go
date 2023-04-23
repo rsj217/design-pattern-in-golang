@@ -20,7 +20,7 @@ func init() {
 	}
 }
 
-func Client() {
+func client() {
 	conn1 := connPool.Get().(*Conn)
 	fmt.Printf("&conn1=%p, addr=%s port=%d\n", conn1, conn1.addr, conn1.port)
 	connPool.Put(conn1)

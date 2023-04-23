@@ -66,7 +66,7 @@ func GetDisAmountFromStepRule(amount int64, b Benefiter) int64 {
 	return 0
 }
 
-func Client() {
+func client() {
 	coupon := &Coupon{}
 	coupon.addAmountRule(9, 2)
 	coupon.addAmountRule(49, 5)

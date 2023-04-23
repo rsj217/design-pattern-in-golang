@@ -19,7 +19,7 @@ type UserRecord struct {
 	act *Act
 }
 
-func Client() {
+func client() {
 	act := &Act{1, "大促"}
 	ur1 := UserRecord{id: 1, act: act}
 	ur2 := UserRecord{id: 2, act: act}

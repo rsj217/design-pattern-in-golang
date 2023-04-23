@@ -43,7 +43,7 @@ func (f *Facade) Check() bool {
 	return f.auth.check() && f.stock.check() && f.risk.check()
 }
 
-func Client() {
+func client() {
 	actId := int64(101)
 	session := "session217"
 	device := "ios171"

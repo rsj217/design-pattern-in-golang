@@ -78,7 +78,7 @@ type Config struct {
 	rule  string
 }
 
-func Client() {
+func client() {
 	conf := &Config{int64(100), "100-70-20"}
 	coupon := NewCoupon(conf.rule)
 

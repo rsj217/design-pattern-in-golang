@@ -20,7 +20,7 @@ func (cl CouponList) Iterator() <-chan *Coupon {
 	return c
 }
 
-func Client() {
+func client() {
 	couponList := CouponList{
 		&Coupon{1},
 		&Coupon{2},

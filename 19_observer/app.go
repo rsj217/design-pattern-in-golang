@@ -68,7 +68,7 @@ func (c *Consumer) ReceiveMsg(msg string) {
 	c.NotifyAll()
 }
 
-func Client() {
+func client() {
 	cm := &CouponManger{
 		1,
 	}

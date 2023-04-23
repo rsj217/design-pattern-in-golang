@@ -60,7 +60,7 @@ func (f *Filter) Err() error {
 	return f.err
 }
 
-func Client() {
+func client() {
 	f := Filter{
 		adiu:        "adiu_1234",
 		poiid:       "BX10010",

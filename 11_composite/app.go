@@ -42,7 +42,7 @@ func (b *Benefit) GetDiscount() int64 {
 	return ans
 }
 
-func Client() {
+func client() {
 	c1 := &Coupon{10}
 	c2 := &Coupon{5}
 	card1 := &Card{

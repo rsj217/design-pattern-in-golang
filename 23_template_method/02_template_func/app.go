@@ -40,7 +40,7 @@ func MakeNotify(uid int64, msg string, getIdentify GetIdentifyer, sender Sender,
 	return ans
 }
 
-func Client() {
+func client() {
 	flag := "push"
 	msg := "hello world"
 	uid := int64(100100)

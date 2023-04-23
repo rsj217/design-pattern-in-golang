@@ -51,7 +51,7 @@ func (a *Act) Redo() *Snapshot {
 	return nil
 }
 
-func Client() {
+func client() {
 	act := NewAct(10)
 	act.Consumer(3)
 	act.Consumer(5)

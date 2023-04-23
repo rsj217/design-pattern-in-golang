@@ -2,7 +2,7 @@ package visitor
 
 import "testing"
 
-func TestClient(t *testing.T) {
+func Test_client(t *testing.T) {
 	tests := []struct {
 		name string
 	}{
@@ -10,7 +10,7 @@ func TestClient(t *testing.T) {
 	}
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
-			Client()
+			client()
 		})
 	}
 }

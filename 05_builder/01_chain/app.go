@@ -49,7 +49,7 @@ func (b *Builder) orderId(orderId string) *Builder {
 	return b
 }
 
-func Client() {
+func client() {
 	// 售卖
 	builder := NewBuilder()
 	userManger := builder.

@@ -171,7 +171,7 @@ func (tc TokenTransferCommand) Call() {
 	}
 }
 
-func Client() {
+func client() {
 	act := NewAct()
 	cmd1 := NewTransactCommand(act, Produce, 100)
 	cmd2 := NewTransactCommand(act, Consume, 30)

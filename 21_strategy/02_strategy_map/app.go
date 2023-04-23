@@ -24,7 +24,7 @@ var NotifyCtx = map[NStrategy]func(identify, msg string) bool{
 	SMSStrategy:  SMSSend,
 }
 
-func Client() {
+func client() {
 	deviceId := "ios-14-10010"
 	phone := "18519191001"
 	msg := "hello world"

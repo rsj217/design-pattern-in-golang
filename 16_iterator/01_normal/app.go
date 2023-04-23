@@ -38,7 +38,7 @@ func (cl CouponList) createIterator() Iterator {
 	return &CouponIterator{0, cl}
 }
 
-func Client() {
+func client() {
 	couponList := CouponList{
 		&Coupon{1},
 		&Coupon{2},

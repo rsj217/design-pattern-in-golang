@@ -56,7 +56,7 @@ func (ev ExportVisitor) VisitorForScenicWorker(lw *ScenicWorker) {
 	fmt.Printf("ExportVisitor export data from %v\n", lw.GetName())
 }
 
-func Client() {
+func client() {
 	hw := &HotelWorker{"hotelWorker"}
 	lw := &ScenicWorker{"ScenicWorker"}
 

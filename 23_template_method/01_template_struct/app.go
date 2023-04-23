@@ -59,7 +59,7 @@ func MakeNotify(msg string, notifyer Notifyer) bool {
 	return ans
 }
 
-func Client() {
+func client() {
 	flag := "push"
 	msg := "hello world"
 	uid := int64(100100)

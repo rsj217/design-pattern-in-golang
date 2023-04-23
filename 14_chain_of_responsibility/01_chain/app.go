@@ -74,7 +74,7 @@ func Chain(request *Request, filters []Filter) error {
 	return nil
 }
 
-func Client() {
+func client() {
 	request := &Request{
 		"adiu_1234",
 		"BX10010",

@@ -70,7 +70,7 @@ func (nc *NotifyCtx) Send(msg string) bool {
 	return nc.notifyer.Send(msg)
 }
 
-func Client() {
+func client() {
 	flag := "both"
 	notifyCtx := NotifyCtx{}
 	msg := "hello world"

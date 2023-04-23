@@ -21,7 +21,7 @@ func (cl CouponList) Iterator() func() (*Coupon, bool) {
 
 }
 
-func Client() {
+func client() {
 	couponList := CouponList{
 		&Coupon{1},
 		&Coupon{2},
