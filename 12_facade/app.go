@@ -2,7 +2,7 @@ package facade
 
 import "fmt"
 
-type Cheker interface {
+type Checker interface {
 	check() bool
 }
 
@@ -39,7 +39,7 @@ type Facade struct {
 	risk  *Risk
 }
 
-func (f Facade) Check() bool {
+func (f *Facade) Check() bool {
 	return f.auth.check() && f.stock.check() && f.risk.check()
 }
 

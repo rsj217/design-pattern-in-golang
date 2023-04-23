@@ -1,4 +1,4 @@
-package decorator
+package proxy
 
 import "testing"
 
@@ -19,7 +19,7 @@ func Test_client2(t *testing.T) {
 	tests := []struct {
 		name string
 	}{
-		{"fetch with redis wrapper"},
+		{"fetch with redis proxy"},
 	}
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
@@ -32,7 +32,7 @@ func Test_client3(t *testing.T) {
 	tests := []struct {
 		name string
 	}{
-		{"multi wrapper cache hit"},
+		{"multi proxy cache hit"},
 	}
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
@@ -45,7 +45,7 @@ func Test_client4(t *testing.T) {
 	tests := []struct {
 		name string
 	}{
-		{"multi wrapper cache missing"},
+		{"multi proxy cache missing"},
 	}
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {

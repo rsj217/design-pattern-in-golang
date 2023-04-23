@@ -1,4 +1,4 @@
-package decorator
+package proxy
 
 import "fmt"
 
@@ -13,7 +13,7 @@ func Fetch(id int64) *Coupon {
 
 type GetFunc func(id int64) *Coupon
 
-func RedisCacheWrapper(fn GetFunc) GetFunc {
+func RedisCacheProxy(fn GetFunc) GetFunc {
 	return func(id int64) *Coupon {
 		fmt.Println("\tredis cache")
 		if id == 10 {
@@ -26,7 +26,7 @@ func RedisCacheWrapper(fn GetFunc) GetFunc {
 	}
 }
 
-func LocalCacheWrapper(fn GetFunc) GetFunc {
+func LocalCacheProxy(fn GetFunc) GetFunc {
 	return func(id int64) *Coupon {
 		fmt.Println("\tlocal cache")
 		if id == 20 {
@@ -39,16 +39,20 @@ func LocalCacheWrapper(fn GetFunc) GetFunc {
 	}
 }
 
-func client() {
+func client1() {
 	coupon := Fetch(21)
 	fmt.Printf("coupon.id=%d\n", coupon.id)
 
-	coupon = RedisCacheWrapper(Fetch)(21)
+	couponRedisProxy := RedisCacheProxy(Fetch)
+	coupon = couponRedisProxy(10)
 	fmt.Printf("coupon.id=%d\n", coupon.id)
 
-	coupon = LocalCacheWrapper(Fetch)(20)
+	couponLocalProxy := LocalCacheProxy(couponRedisProxy)
+	coupon = couponLocalProxy(20)
 	fmt.Printf("coupon.id=%d\n", coupon.id)
+}
 
-	coupon = LocalCacheWrapper(RedisCacheWrapper(Fetch))(21)
+func client2() {
+	coupon := LocalCacheProxy(RedisCacheProxy(Fetch))(21)
 	fmt.Printf("coupon.id=%d\n", coupon.id)
 }
