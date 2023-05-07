@@ -33,11 +33,11 @@ func (c *Coupon) GetStepRule() string {
 
 // var _ Benefiter = (*Voucher)(nil) 编译失败
 type Voucher struct {
-	discount int64
+	disAmount int64
 }
 
 func (v *Voucher) GetDiscountPrice() int64 {
-	return v.discount / 100
+	return v.disAmount / 100
 }
 
 var _ Benefiter = (*VoucherCouponAdapter)(nil)
@@ -72,13 +72,13 @@ func client() {
 	coupon.addAmountRule(49, 5)
 	coupon.addAmountRule(99, 10)
 	amount := GetDisAmountFromStepRule(8, coupon)
-	fmt.Printf("coupon discount=%d\n", amount)
+	fmt.Printf("coupon disAmount=%d\n", amount)
 	amount = GetDisAmountFromStepRule(100*100, coupon)
-	fmt.Printf("coupon discount=%d\n", amount)
+	fmt.Printf("coupon disAmount=%d\n", amount)
 
 	voucherCoupon := &VoucherCouponAdapter{
 		&Voucher{20 * 100},
 	}
 	amount = GetDisAmountFromStepRule(0, voucherCoupon)
-	fmt.Printf("voucher discount=%d\n", amount)
+	fmt.Printf("voucher disAmount=%d\n", amount)
 }

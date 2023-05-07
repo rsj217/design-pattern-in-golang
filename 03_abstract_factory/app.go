@@ -4,26 +4,28 @@ import (
 	"fmt"
 )
 
+// 权益接口
 type Benefiter interface {
-	GetDiscount() int64
+	GetDisAmount() int64
 }
 
 type HotelVoucher struct {
-	discount int64
+	disAmount int64
 }
 
-func (hv *HotelVoucher) GetDiscount() int64 {
-	return hv.discount
+func (hv *HotelVoucher) GetDisAmount() int64 {
+	return hv.disAmount
 }
 
 type ScenicVoucher struct {
-	discount int64
+	disAmount int64
 }
 
-func (sv *ScenicVoucher) GetDiscount() int64 {
-	return sv.discount
+func (sv *ScenicVoucher) GetDisAmount() int64 {
+	return sv.disAmount
 }
 
+// 会员卡接口
 type Carder interface {
 	GetSaleAmount() int64
 }
@@ -44,58 +46,61 @@ func (sc *ScenicCard) GetSaleAmount() int64 {
 	return sc.saleAmount
 }
 
+// 抽象工厂接口
 type BizFactory interface {
 	CreateBenefiter() Benefiter
 	CreateCarder() Carder
 }
 
+// 酒店工厂
 type HotelFactory struct {
 	config Config
 }
 
 func (hf *HotelFactory) CreateBenefiter() Benefiter {
-	return &HotelVoucher{hf.config.discount}
+	return &HotelVoucher{hf.config.disAmount}
 }
 func (hf *HotelFactory) CreateCarder() Carder {
 	return &HotelCard{hf.config.saleAmount}
 }
 
+// 景区工厂
 type ScenicFactory struct {
 	config Config
 }
 
 func (sf *ScenicFactory) CreateBenefiter() Benefiter {
-	return &ScenicVoucher{sf.config.discount}
+	return &ScenicVoucher{sf.config.disAmount}
 
 }
 func (sf *ScenicFactory) CreateCarder() Carder {
 	return &ScenicCard{sf.config.saleAmount}
 }
 
-type clientlication struct {
+type Application struct {
 	factory BizFactory
 	benefit Benefiter
 }
 
-func Newclientlication(factory BizFactory) *clientlication {
-	return &clientlication{factory: factory}
+func NewApplication(factory BizFactory) *Application {
+	return &Application{factory: factory}
 }
 
 type Config struct {
-	discount   int64
+	disAmount  int64
 	saleAmount int64
 }
 
 func client() {
 	conf := Config{int64(10), int64(20)}
 
-	client := Newclientlication(&HotelFactory{conf})
-	discount := client.factory.CreateBenefiter().GetDiscount()
+	client := NewApplication(&HotelFactory{conf})
+	disAmount := client.factory.CreateBenefiter().GetDisAmount()
 	saleAmount := client.factory.CreateCarder().GetSaleAmount()
-	fmt.Printf("hotel voucher discount: %d, card: %d \n", discount, saleAmount)
+	fmt.Printf("hotel voucher disAmount: %d, card: %d \n", disAmount, saleAmount)
 
-	client = Newclientlication(&ScenicFactory{conf})
-	discount = client.factory.CreateBenefiter().GetDiscount()
+	client = NewApplication(&ScenicFactory{conf})
+	disAmount = client.factory.CreateBenefiter().GetDisAmount()
 	saleAmount = client.factory.CreateCarder().GetSaleAmount()
-	fmt.Printf("scenic voucher discount: %d, card: %d \n", discount, saleAmount)
+	fmt.Printf("scenic voucher disAmount: %d, card: %d \n", disAmount, saleAmount)
 }

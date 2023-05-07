@@ -3,25 +3,25 @@ package composite
 import "fmt"
 
 type Benefiter interface {
-	GetDiscount() int64
+	GetDisAmount() int64
 }
 
 type Coupon struct {
-	discount int64
+	disAmount int64
 }
 
-func (c *Coupon) GetDiscount() int64 {
-	return c.discount
+func (c *Coupon) GetDisAmount() int64 {
+	return c.disAmount
 }
 
 type Card struct {
 	coupons []*Coupon
 }
 
-func (c *Card) GetDiscount() int64 {
+func (c *Card) GetDisAmount() int64 {
 	ans := int64(0)
 	for _, v := range c.coupons {
-		ans += v.GetDiscount()
+		ans += v.GetDisAmount()
 	}
 	return ans
 }
@@ -34,10 +34,10 @@ func (b *Benefit) Add(benefiter Benefiter) {
 	b.benefits = append(b.benefits, benefiter)
 }
 
-func (b *Benefit) GetDiscount() int64 {
+func (b *Benefit) GetDisAmount() int64 {
 	ans := int64(0)
 	for _, v := range b.benefits {
-		ans += v.GetDiscount()
+		ans += v.GetDisAmount()
 	}
 	return ans
 }
@@ -58,7 +58,7 @@ func client() {
 	benefit.Add(card1)
 	benefit.Add(card2)
 
-	discount := benefit.GetDiscount()
-	fmt.Printf("benefit discount=%d", discount)
+	disAmount := benefit.GetDisAmount()
+	fmt.Printf("benefit disAmount=%d", disAmount)
 
 }
