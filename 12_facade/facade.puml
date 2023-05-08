@@ -1,0 +1,39 @@
+@startuml
+namespace facade {
+    class Auth << (S,Aquamarine) >> {
+        - session string
+
+        - check() bool
+
+    }
+    interface Checker  {
+        - check() bool
+
+    }
+    class Facade << (S,Aquamarine) >> {
+        - stock *Stock
+        - auth *Auth
+        - risk *Risk
+
+        + Check() bool
+
+    }
+    class Risk << (S,Aquamarine) >> {
+        - device string
+
+        - check() bool
+
+    }
+    class Stock << (S,Aquamarine) >> {
+        - actId int64
+
+        - check() bool
+
+    }
+}
+
+"facade.Checker" <|-- "facade.Auth"
+"facade.Checker" <|-- "facade.Risk"
+"facade.Checker" <|-- "facade.Stock"
+
+@enduml

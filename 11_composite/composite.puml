@@ -1,0 +1,32 @@
+@startuml
+namespace composite {
+    class Benefit << (S,Aquamarine) >> {
+        - benefits []Benefiter
+
+        + Add(benefiter Benefiter) 
+        + GetDisAmount() int64
+
+    }
+    interface Benefiter  {
+        + GetDisAmount() int64
+
+    }
+    class Card << (S,Aquamarine) >> {
+        - coupons []*Coupon
+
+        + GetDisAmount() int64
+
+    }
+    class Coupon << (S,Aquamarine) >> {
+        - disAmount int64
+
+        + GetDisAmount() int64
+
+    }
+}
+
+"composite.Benefiter" <|-- "composite.Benefit"
+"composite.Benefiter" <|-- "composite.Card"
+"composite.Benefiter" <|-- "composite.Coupon"
+
+@enduml

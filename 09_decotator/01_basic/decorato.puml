@@ -1,0 +1,26 @@
+@startuml
+namespace decorator {
+    class Coupon << (S,Aquamarine) >> {
+        - id int64
+
+    }
+    class CouponManager << (S,Aquamarine) >> {
+        + Fetch(id int64) *Coupon
+
+    }
+    interface Fetcher  {
+        + Fetch(id int64) *Coupon
+
+    }
+    class LogWrapper << (S,Aquamarine) >> {
+        - fetcher Fetcher
+
+        + Fetch(id int64) *Coupon
+
+    }
+}
+
+"decorator.Fetcher" <|-- "decorator.CouponManager"
+"decorator.Fetcher" <|-- "decorator.LogWrapper"
+
+@enduml
