@@ -1,0 +1,27 @@
+@startuml
+namespace composition {
+    class Client << (S,Aquamarine) >> {
+    }
+    interface Component  {
+        - execute() 
+
+    }
+    class Composite << (S,Aquamarine) >> {
+        - children []*Component
+
+        - execute() 
+        - add() 
+        - remove() 
+        - getChildren() []Component
+
+    }
+    class Leaf << (S,Aquamarine) >> {
+        - execute() 
+
+    }
+}
+
+"composition.Component" <|-- "composition.Composite"
+"composition.Component" <|-- "composition.Leaf"
+
+@enduml

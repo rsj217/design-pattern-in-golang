@@ -1,8 +1,30 @@
 package composition
 
-type Card struct {
-	userCoupons []*UserCoupon
+type Component interface {
+	execute()
 }
 
-type UserCoupon struct {
+type Composite struct {
+	children []*Component
+}
+
+func (cc Composite) execute() {
+}
+
+func (cc Composite) add() {
+}
+
+func (cc Composite) remove() {
+}
+func (cc Composite) getChildren() []Component {
+	return nil
+}
+
+type Leaf struct {
+}
+
+func (l Leaf) execute() {
+}
+
+type Client struct {
 }

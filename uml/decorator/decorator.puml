@@ -1,0 +1,28 @@
+@startuml
+namespace decorator {
+    class BaseDecorator << (S,Aquamarine) >> {
+        - wrappee Component
+
+        - execute() 
+
+    }
+    interface Component  {
+        - execute() 
+
+    }
+    class ConcreteComponent << (S,Aquamarine) >> {
+        - execute() 
+        - extra() 
+
+    }
+    class ConcreteDecorators << (S,Aquamarine) >> {
+        - execute() 
+
+    }
+}
+
+"decorator.Component" <|-- "decorator.BaseDecorator"
+"decorator.Component" <|-- "decorator.ConcreteComponent"
+"decorator.Component" <|-- "decorator.ConcreteDecorators"
+
+@enduml
