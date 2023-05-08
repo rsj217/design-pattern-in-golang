@@ -1,0 +1,9 @@
+@startuml
+    class Act << (S,Aquamarine) >> {
+    }
+    class ActList << (T, #FF7700) >>  {
+    }
+
+    ActList o-- Act
+
+@enduml

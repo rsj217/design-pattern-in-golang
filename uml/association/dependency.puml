@@ -1,0 +1,15 @@
+@startuml
+    class Act << (S,Aquamarine) >> {
+        + GetDisAmount(tpl CouponTpl) int64
+
+    }
+    class CouponTpl << (S,Aquamarine) >> {
+        - amount int64
+        - name string
+
+        + Id int64
+
+    }
+
+    Act ..> CouponTpl
+@enduml

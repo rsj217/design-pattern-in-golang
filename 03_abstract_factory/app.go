@@ -79,7 +79,6 @@ func (sf *ScenicFactory) CreateCarder() Carder {
 
 type Application struct {
 	factory BizFactory
-	benefit Benefiter
 }
 
 func NewApplication(factory BizFactory) *Application {

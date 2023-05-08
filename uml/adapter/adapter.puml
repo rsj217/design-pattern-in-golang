@@ -1,0 +1,21 @@
+@startuml
+namespace adapter {
+    class Adapter << (S,Aquamarine) >> {
+        - adapter Service
+
+        - method(data <font color=blue>interface</font>{}) 
+
+    }
+    class Client << (S,Aquamarine) >> {
+    }
+    interface ClientInterface  {
+        - method(data <font color=blue>interface</font>{}) 
+
+    }
+    class Service << (S,Aquamarine) >> {
+    }
+}
+
+"adapter.ClientInterface" <|-- "adapter.Adapter"
+
+@enduml

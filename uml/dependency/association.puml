@@ -1,0 +1,14 @@
+@startuml
+    class Act << (S,Aquamarine) >> {
+        + + couponTplList []*CouponTpl
+
+    }
+    class CouponTpl << (S,Aquamarine) >> {
+        - amount int64
+        - name string
+        + Id int64
+
+    }
+
+    Act --> CouponTpl
+@enduml

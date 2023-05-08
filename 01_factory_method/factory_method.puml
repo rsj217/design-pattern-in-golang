@@ -1,0 +1,38 @@
+@startuml
+namespace factory_method {
+    interface Benefiter  {
+        + GetDisAmount() int64
+
+    }
+    class Config << (S,Aquamarine) >> {
+        - price int64
+        - rule string
+
+    }
+    class Coupon << (S,Aquamarine) >> {
+        - rule string
+
+        + GetDisAmount() int64
+
+    }
+    class CouponFactory << (S,Aquamarine) >> {
+        + CreateBenefiter(rule string) Benefiter
+
+    }
+    interface Factory  {
+        + CreateBenefiter(rule string) Benefiter
+
+    }
+    class Voucher << (S,Aquamarine) >> {
+        - rule string
+
+        + GetDisAmount() int64
+
+    }
+}
+
+"factory_method.Benefiter" <|.. "factory_method.Coupon"
+"factory_method.Factory" <|.. "factory_method.CouponFactory"
+"factory_method.Benefiter" <|.. "factory_method.Voucher"
+
+@enduml
