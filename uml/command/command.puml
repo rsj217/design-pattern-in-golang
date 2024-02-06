@@ -1,0 +1,71 @@
+@startuml
+namespace command {
+    class Act << (S,Aquamarine) >> {
+        - stock int64
+
+        + Produce(stock int64) 
+        + Consume(stock int64) bool
+
+    }
+    interface Command  {
+        + Call() 
+        + Undo() 
+        + Succeeded() bool
+        + SetSucceeded(value bool) 
+
+    }
+    class CompositeTransferCommand << (S,Aquamarine) >> {
+        - commands []Command
+
+        + Call() 
+        + Undo() 
+        + Succeeded() bool
+        + SetSucceeded(value bool) 
+
+    }
+    class Score << (S,Aquamarine) >> {
+        - token int64
+
+        - getScore() int64
+
+        + String() string
+        + Produce(token int64) 
+        + Consume(token int64) bool
+
+    }
+    class TokenTransferCommand << (S,Aquamarine) >> {
+        - from Transfer
+        - token int64
+
+        + Call() 
+
+    }
+    class TransactCommand << (S,Aquamarine) >> {
+        - succeeded bool
+        - token int64
+        - transacter Transfer
+        - action Action
+
+        + Succeeded() bool
+        + SetSucceeded(value bool) 
+        + Call() 
+        + Undo() 
+
+    }
+    interface Transfer  {
+        + Produce( int64) 
+        + Consume( int64) bool
+
+    }
+    class command.Action << (T, #FF7700) >>  {
+    }
+}
+"command.CompositeTransferCommand" *-- "command.TokenTransferCommand"
+
+"command.Transfer" <|-- "command.Act"
+"command.Command" <|-- "command.CompositeTransferCommand"
+"command.Transfer" <|-- "command.Score"
+"command.Command" <|-- "command.TransactCommand"
+
+"__builtin__.int64" #.. "command.Action"
+@enduml

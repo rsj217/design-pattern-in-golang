@@ -1,0 +1,47 @@
+@startuml
+namespace mediator {
+    class ComponentA << (S,Aquamarine) >> {
+        - m Mediator
+
+        - operationA() 
+
+    }
+    class ComponentB << (S,Aquamarine) >> {
+        - m Mediator
+
+        - operationB() 
+
+    }
+    class ComponentC << (S,Aquamarine) >> {
+        - m Mediator
+
+        - operationC() 
+
+    }
+    class ComponentD << (S,Aquamarine) >> {
+        - m Mediator
+
+        - operationD() 
+
+    }
+    class ConcreteMediator << (S,Aquamarine) >> {
+        - notify(sender <font color=blue>interface</font>{}) 
+        - reactOnA() 
+        - reactOnB() 
+        - reactOnC() 
+        - reactOnD() 
+
+    }
+    interface Mediator  {
+        - notify(sender <font color=blue>interface</font>{}) 
+
+    }
+}
+"mediator.ComponentA" *-- "mediator.ConcreteMediator"
+"mediator.ComponentB" *-- "mediator.ConcreteMediator"
+"mediator.ComponentC" *-- "mediator.ConcreteMediator"
+"mediator.ComponentD" *-- "mediator.ConcreteMediator"
+
+"mediator.Mediator" <|-- "mediator.ConcreteMediator"
+
+@enduml

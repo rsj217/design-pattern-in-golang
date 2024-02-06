@@ -1,0 +1,33 @@
+@startuml
+namespace proxy {
+    class Coupon << (S,Aquamarine) >> {
+        - id int64
+
+    }
+    class DB << (S,Aquamarine) >> {
+        + Fetch(id int64) *Coupon
+
+    }
+    interface Fetcher  {
+        + Fetch(id int64) *Coupon
+
+    }
+    class LocalCacheProxy << (S,Aquamarine) >> {
+        - fetcher Fetcher
+
+        + Fetch(id int64) *Coupon
+
+    }
+    class RedisCacheProxy << (S,Aquamarine) >> {
+        - fetcher Fetcher
+
+        + Fetch(id int64) *Coupon
+
+    }
+}
+
+"proxy.Fetcher" <|-- "proxy.DB"
+"proxy.Fetcher" <|-- "proxy.LocalCacheProxy"
+"proxy.Fetcher" <|-- "proxy.RedisCacheProxy"
+
+@enduml

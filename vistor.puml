@@ -1,0 +1,42 @@
+@startuml
+namespace visitor {
+    class ExportVisitor << (S,Aquamarine) >> {
+        + VisitorForHotelWorker(hw *HotelWorker) 
+        + VisitorForScenicWorker(lw *ScenicWorker) 
+
+    }
+    class HotelWorker << (S,Aquamarine) >> {
+        - name string
+
+        + GetName() string
+        + Accept(visitor Visitor) 
+
+    }
+    class LogVisitor << (S,Aquamarine) >> {
+        + VisitorForHotelWorker(hw *HotelWorker) 
+        + VisitorForScenicWorker(lw *ScenicWorker) 
+
+    }
+    class ScenicWorker << (S,Aquamarine) >> {
+        - name string
+
+        + GetName() string
+        + Accept(visitor Visitor) 
+
+    }
+    interface Visitor  {
+        + VisitorForHotelWorker( *HotelWorker) 
+        + VisitorForScenicWorker( *ScenicWorker) 
+
+    }
+    interface Worker  {
+        + GetName() 
+        + Accept( Visitor) 
+
+    }
+}
+
+"visitor.Visitor" <|-- "visitor.ExportVisitor"
+"visitor.Visitor" <|-- "visitor.LogVisitor"
+
+@enduml

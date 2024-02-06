@@ -1,0 +1,44 @@
+@startuml
+namespace observer {
+    class Consumer << (S,Aquamarine) >> {
+        - msg string
+        - observerList []Observer
+
+        + Register(observer Observer) 
+        + UnRegister(observer Observer) 
+        + NotifyAll() 
+        + ReceiveMsg(msg string) 
+
+    }
+    class CouponManger << (S,Aquamarine) >> {
+        - id int64
+
+        + Update(orderId string) 
+        + GetID() int64
+
+    }
+    class LogManger << (S,Aquamarine) >> {
+        - id int64
+
+        + Update(orderId string) 
+        + GetID() int64
+
+    }
+    interface Observer  {
+        + Update( string) 
+        + GetID() int64
+
+    }
+    interface Subjecter  {
+        + Register( Observer) 
+        + UnRegister( Observer) 
+        + NotifyAll() 
+
+    }
+}
+
+"observer.Subjecter" <|-- "observer.Consumer"
+"observer.Observer" <|-- "observer.CouponManger"
+"observer.Observer" <|-- "observer.LogManger"
+
+@enduml
